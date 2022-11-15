@@ -1,0 +1,414 @@
+/* Common properties */
+:root {
+  --site-font-family: helvetica, sans-serif;
+  --site-font-primary: white;
+  --site-font-secondary: rgb(185, 185, 185);
+  --site-background-primary: rgb(7, 1, 48);
+  --site-background-secondary: rgb(4, 37, 89);
+  color: white;
+  background-color: var(--site-background-primary);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--site-font-family);
+}
+.site-font {
+  font-family: var(--site-font-family) !important;
+}
+
+/* Nav Bar */
+.top-bar {
+  height: 10vh;
+  z-index: 1000;
+  /* border: 1px solid blue; */
+}
+
+/* Player area */
+.player-content {
+  display: flex;
+  padding-inline: 3vw;
+  justify-content: space-between;
+}
+
+/* main */
+main {
+  width: 60vw;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+}
+
+/* New Releases carasoul */
+
+section.releases-carasoul {
+  display: flex;
+  width: 100%;
+  height: 30vh;
+  box-sizing: border-box;
+  padding-block: 2%;
+}
+.release-albums {
+  height: 100%;
+  max-width: 32%;
+  margin-inline: 1%;
+  flex-grow: 1;
+}
+
+/* Latest release albums */
+
+.releases {
+  margin-top: 1.5rem; /*Set margin accordingly */
+}
+.latest-releases {
+  display: grid;
+  width: 90%;
+  margin-top: 0.5rem;
+  height: 40vh;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  row-gap: 0.5rem;
+  padding: 0.25rem;
+}
+
+/* Card for Each releases */
+.releases-songs {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.releases-songs > img {
+  grid-area: album-art;
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+/* Song description div */
+.song-desc {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0.5rem;
+  justify-content: center;
+  height: 100%;
+  width: 180%;
+}
+.album-name {
+  font-weight: bolder;
+  text-transform: capitalize;
+}
+.album-date,
+.song-len {
+  text-transform: uppercase;
+  color: var(--site-font-secondary);
+  font-size: 0.85rem;
+}
+
+/* Extra info */
+.extra-info {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 0.5rem;
+}
+.song-len {
+  margin-top: 1.5rem;
+}
+
+/* Dropdown */
+.dropdown-list {
+  position: absolute;
+  background-color: darkslateblue;
+  left: 60%;
+  top: 13%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  opacity: 0;
+  width: 0px;
+  height: 0px;
+  overflow: hidden;
+  z-index: 2;
+  border: 1px solid black;
+  box-shadow: 0px 0px 2px 1px black;
+  transition: all ease-in-out 0.3s;
+  color: white;
+}
+.dropdown-list hr {
+  color: white;
+  width: 80%;
+}
+.dropdown-list a,
+.dropdown-list a:visited {
+  color: white;
+  text-decoration: none;
+}
+/*Dropdown-icon*/
+
+.dropdown-icon input[type="checkbox"] {
+  display: none;
+}
+.fa-ellipsis-h {
+  cursor: pointer;
+}
+
+.dropdown-icon input[type="checkbox"]:checked + .dropdown-list {
+  width: max-content;
+  height: 110%;
+  opacity: 1;
+  padding: 5px;
+}
+
+/* Artists */
+.popular-artists {
+  margin-top: 2%;
+  width: 100%;
+}
+
+.artist-list {
+  width: 100%;
+  display: flex;
+}
+.artist-item {
+  margin-inline-end: 1%; /*TODO: Think over the padding*/
+  text-align: center;
+  text-transform: capitalize;
+}
+.artist-item img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.artist-item img:hover{
+  box-shadow: 0px 0px 5px 2px rgba(179, 167, 234, 0.625);
+} 
+
+/* Popular Generes */
+
+section.popular-genres {
+  margin-top: 5vh;
+  display: flex;
+  height: 15vh;
+}
+
+.genre-item {
+  flex-grow: 1;
+}
+
+/* Stations-icon */
+.stations-div {
+  width: 10vw;
+  position: relative;
+}
+#yellow {
+  margin-block: 1.25vh;
+  background-color: yellow;
+  width: 9vw;
+  height: 12vh;
+  left: 0.439453125vw;
+  position: relative;
+}
+#dark-yellow {
+  position: absolute;
+  width: 8vw;
+  background-color: darkgoldenrod;
+  height: 13.7vh;
+  top: 0.554016620498615vh;
+  left: 0.9440104166666666vw;
+}
+
+#orange {
+  position: absolute;
+  width: 7vw;
+  z-index: 2;
+  background-color: rgb(255, 115, 0);
+  height: 15vh;
+  top: 0.13850415512465375vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 1.5299479166666667vw;
+}
+/* Stations icon animation  */
+@keyframes rotate{
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
+#orange span#radio-icon {
+  font-size: 5vw;
+  cursor: pointer;
+  animation-name: rotate;
+  animation-duration: 10s;
+  overflow: hidden;
+  animation-iteration-count: infinite;
+}
+
+/* Stations genres */
+
+.music-moods{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.music-mood-icons{
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border:1px solid blue; */
+  width: 6vw;
+  height: 6vw;
+}
+.music-mood-icons:hover{
+  box-shadow: 0px 0px 5px 2px rgba(179, 167, 234, 0.625);
+}
+.music-moods:nth-child(2) .music-mood-icons{
+  background-image: url(assets/music_moods/love_music.jpg);
+  background-size: cover;
+}
+.music-moods:nth-child(3) .music-mood-icons{
+  background-image: url(assets/music_moods/retro.jpg);
+  background-size: cover;
+}
+.music-moods:nth-child(4) .music-mood-icons{
+  background-image: url(assets/music_moods/workout.webp);
+  background-size: cover;
+  background-position:-15px 0px;
+}
+.music-moods:nth-child(5) .music-mood-icons{
+  background-image: url(assets/music_moods/chill_music.jpg);
+  background-size: cover;
+}
+.music-moods:nth-child(6) .music-mood-icons{
+  background-image: url(assets/music_moods/rock.jpg);
+  background-size: cover;
+}
+
+.music-moods:nth-child(7) .music-mood-icons{
+  background-image: url(assets/music_moods/pop.png);
+  background-size: cover;
+}
+
+
+
+
+
+
+
+/* music themes -2 */
+.music-themes-2 {
+  margin-top: 5vh;
+  height: auto;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  /* flex-wrap: no-wrap; */
+  justify-content: center;
+  align-items: center;
+}
+/* this outer div contains the inner div and the image and text */
+.outer-div {
+  width: 19.5vw;
+  height: 10vw;
+  overflow: hidden;
+  min-width: 123px;
+  min-height: 82px;
+  margin: 5px;
+  cursor: pointer;
+}
+/* inner div portion */
+.inner-div {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  background-position: center;
+  background-size: cover;
+  transition: all ease-in-out 0.3s;
+}
+/* divs corresponding to each of the 3 sub sections in the themes section */
+/* party */
+.music-themes-2 .outer-div:nth-child(1) .inner-div {
+  background-image: url("assets/music\ themes\ 2/party.jpg");
+}
+/* electronic */
+.music-themes-2 .outer-div:nth-child(2) .inner-div {
+  background-image: url("assets/music\ themes\ 2/electronic.jpg");
+}
+/* road */
+.music-themes-2 .outer-div:nth-child(3) .inner-div {
+  background-image: url("assets/music\ themes\ 2/road.jpg");
+}
+/* hovering actions: the text should be scaled down on hover and the background image should be scaled up at the same time gap */
+.outer-div:hover .inner-div {
+  transform: scale(1.3);
+}
+.outer-div .inner-div span {
+  transform: scale(1);
+  transition: all ease-in-out 0.3s;
+}
+.outer-div:hover .inner-div span {
+  transform: scale(0.75);
+}
+
+/* adjusting inner div properties */
+.inner-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.outer-div .inner-div span {
+  /* color: white; */
+  color: white;
+  font-size: 2vw;
+}
+
+/* Latest Englist section */
+.latest-lang-releases {
+  margin-top: 1rem;
+}
+.latest-lang-releases .latest-releases-container {
+  display: flex;
+}
+.latest-releases-container .release-items {
+  margin-top: 1rem;
+  width: 17%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-inline: 0.35rem;
+  overflow: hidden;
+  background-color: var(--site-background-primary);
+  transition: box-shadow 0.2s ease-in-out;
+}
+.latest-releases-container .release-items:hover {
+  box-shadow: 0px 0px 5px 2px rgba(179, 167, 234, 0.625);
+  border-radius: 4px;
+}
+.release-items .song-desc {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  height: 7vh;
+  justify-content: space-evenly;
+  width: 100%;
+}
+.release-items > img {
+  width: 100%;
+}
+
+/* Current playlist */
+.playlist-container {
+  width: 30vw;
+  height: 80vh;
+  border: 1px solid black;
+}
